@@ -1,0 +1,49 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baota
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: baota
+  template:
+    metadata:
+      labels:
+        app: baota
+    spec:
+      initContainers:
+        - name: init-container
+          image: chaunceyshannon/aapanel:1.0
+
+          volumeMounts:
+            - mountPath: /data
+              name: data
+          
+      containers:
+        - image: chaunceyshannon/aapanel:1.0
+          imagePullPolicy: IfNotPresent
+          name: baota
+
+          volumeMounts:
+            - mountPath: /www
+              subPath: www
+              name: data
+            - mountPath: /etc
+              subPath: etc
+              name: data
+            - mountPath: /root
+              subPath: root
+              name: data
+            - mountPath: /usr
+              subPath: usr
+              name: data
+            - mountPath: /var
+              subPath: var
+              name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: baota-ebs-claim

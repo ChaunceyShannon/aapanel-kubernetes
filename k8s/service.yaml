@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: baota-svc
+  namespace: default
+spec:
+  selector:
+    app: baota
+  ports:
+    # The first entry will be use for health check in elb
+    # The node will be remove from the backend list if health check faild
+    - name: manager
+      protocol: TCP
+      port: 8888
+      targetPort: 8888
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 443
+    - name: phpmyadmin
+      protocol: TCP
+      port: 888
+      targetPort: 888
+    - name: ssh
+      protocol: TCP
+      port: 22
+      targetPort: 22
+  type: LoadBalancer
