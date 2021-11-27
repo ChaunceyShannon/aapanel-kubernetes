@@ -10,7 +10,7 @@ if [ -d "/data" ]; then
     apt install debootstrap wget ca-certificates -y 
     debootstrap focal /data http://archive.ubuntu.com/ubuntu
     rm /data/etc/apt/sources.list -rfv
-    wget  -O /data/etc/apt/sources.list
+    wget https://raw.githubusercontent.com/ChaunceyShannon/aapanel-kubernetes/main/ubuntu20.04.sources.list -O /data/etc/apt/sources.list
 else 
     if [ ! -f "/etc/apt/sources.list" ]; then
         echo "System not exists. exit."
