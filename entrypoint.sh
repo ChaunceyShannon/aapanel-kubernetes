@@ -19,6 +19,7 @@ else
 
     if [ ! -f "/usr/sbin/sshd" ]; then
         echo "sshd not exists, installing..."
+        apt update
         DEBIAN_FRONTEND=noninteractive apt install locales vim curl wget libasound2 libxss1 libnss3 sudo openssh-server x11-apps libgl1-mesa-glx libgtk-3-0 libglu1-mesa xfonts-wqy ttf-wqy-microhei ttf-wqy-zenhei -y 
         mkdir -p /run/sshd 
         tail -n +5 /etc/locale.gen | sed 's/# //g' > /tmp/f
