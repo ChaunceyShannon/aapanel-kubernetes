@@ -11,8 +11,8 @@ spec:
     # The node will be remove from the backend list if health check faild
     - name: manager
       protocol: TCP
-      port: 8888
-      targetPort: 8888
+      port: 7800
+      targetPort: 7800
     - name: http
       protocol: TCP
       port: 80
