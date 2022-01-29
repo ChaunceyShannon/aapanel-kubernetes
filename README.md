@@ -13,7 +13,7 @@ Please visit: https://shareitnote.com/page/run-aapanel-inside-k8s
 
 ```bash
 cd [数据目录]
-docker run --rm -v `pwd`:/data chaunceyshannon/aapanel:1.0
+docker run --rm -v `pwd`:/data chaunceyshannon/aapanel
 ```
 
 启动面板
@@ -33,7 +33,7 @@ docker run \
     -v `pwd`/root:/root \
     -v `pwd`/usr:/usr \
     -v `pwd`/var:/var \
-    chaunceyshannon/aapanel:1.0
+    chaunceyshannon/aapanel
 ```
 
 登录信息在容器的`/root/bt.install.log`里面
